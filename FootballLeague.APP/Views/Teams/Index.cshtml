@@ -1,0 +1,61 @@
+﻿@using FootballLeague.APP.Models.Teams
+
+@model TeamsViewModel
+
+@{
+    ViewData["Title"] = "Teams Ranking Table";
+}
+
+<style>
+    .demo {
+        border: 1px solid #C0C0C0;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+
+        .demo th {
+            border: 1px solid #C0C0C0;
+            padding: 5px;
+            background: #F0F0F0;
+        }
+
+        .demo td {
+            border: 1px solid #C0C0C0;
+            padding: 5px;
+        }
+</style>
+
+<ul>
+    @if (Model.Teams.Count() != 0)
+    {
+        <table class="demo">
+            <caption>Ranking Table</caption>
+            <thead>
+                <tr>
+                    <th>Place</th>
+                    <th>Team Name</th>
+                    <th>Points</th>
+                    <th>Goal For</th>
+                    <th>Goal Against</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Teams.Count(); i++)
+                {
+                    var currentTeam = @Model.Teams.ElementAt(i);
+                    <tr>
+                        <td>&nbsp;@(i+1)</td>
+                        <td>&nbsp;@currentTeam.Name</td>
+                        <td>&nbsp;@currentTeam.Points</td>
+                        <td>&nbsp;@currentTeam.GoalFor</td>
+                        <td>&nbsp;@currentTeam.GoalAgainst</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>There are no data in Teams Ranking table</p>
+    }
+</ul>

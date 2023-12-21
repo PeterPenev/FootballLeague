@@ -1,0 +1,61 @@
+﻿@using FootballLeague.APP.Models.Matches
+
+@model MatchesViewModel
+
+@{
+    ViewData["Title"] = "Matches Table";
+}
+
+<style>
+    .demo {
+        border: 1px solid #C0C0C0;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+
+        .demo th {
+            border: 1px solid #C0C0C0;
+            padding: 5px;
+            background: #F0F0F0;
+        }
+
+        .demo td {
+            border: 1px solid #C0C0C0;
+            padding: 5px;
+        }
+</style>
+
+<ul>
+    @if (Model.Matches.Count() != 0)
+    {
+        <table class="demo">
+            <caption>Matches Table</caption>
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Team 1</th>
+                    <th>Team 2</th>
+                    <th>Goals Team 1</th>
+                    <th>Goals Team 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Matches.Count(); i++)
+                {
+                    var currentMatch = @Model.Matches.ElementAt(i);
+                    <tr>
+                        <td>&nbsp;@(i+1)</td>
+                        <td>&nbsp;@currentMatch.TeamName1</td>
+                        <td>&nbsp;@currentMatch.TeamName2</td>
+                        <td>&nbsp;@currentMatch.GoalTeam1</td>
+                        <td>&nbsp;@currentMatch.GoalTeam2</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>There are no data in Matches table</p>
+    }
+</ul>
