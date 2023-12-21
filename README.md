@@ -3,6 +3,7 @@
 When the project is setup locally, following script has to be executed on database
 
 #######Start of SQL script#######
+
 alter table Teams
   add constraint Points
       check (Points >= 0)
